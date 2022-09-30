@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03_javascript_dom</title>
+</head>
+<body>
+  <h2>03_javascript_DOM요소 선택하기</h2>
+  <p>HTML요소를 다루기 위해서는 해당 요소를 선택해야 합니다.</p>
+  <p>자바스크립트에서 특정 html요소를 선택하는 방법은 여러가지가 있습니다.</p>
+  <ol>
+    <li>HTML태그이름(TAG)을 이용한 선택하기</li>
+    <li>아이디(ID)명을 이용한 선택</li>
+    <li>클래스(CLASS)명을 이용한 선택</li>
+    <li>name속성(attribute)을 이용한 선택</li>
+    <li>css선택자(selector)을 이용한 선택</li>
+    <li>html객체 집합(object collection)을 이용한 선택</li>
+  </ol>
+
+  <h3>1. html tag명을 이용한 요소 선택하기</h3>
+
+  <h3>2. id명을 이용한 요소 선택하기</h3>
+  <p id="p01">아이디 p01에 배경색 적용하기</p>
+
+  <h3>3. class명을 이용한 요소 선택하기</h3>
+  <span class="title02">클래스명으로 서식적용하기</span>
+  
+  <script>
+    // dom.js
+
+    let title01 = document.getElementsByTagName('h3');
+      console.log(title01);
+      // title01.style.color="00f";
+    //   for(let i=0; i<=title01.length; i++){
+    //   title01.item(i).style.color="#00f";
+    // }
+
+    // 2. id
+    let p01 = document.getElementById('p01');
+    // p01.style.backgroundColor="#ff0";
+    function bgcolor(){
+      p01.style.backgroundColor="#ff0";
+    }
+
+    // 3. class
+    let title02 = document.getElementsByClassName('title02');
+    for(let i=0; i<title02.length; i++){
+      title02.item(i).style.color="#f00";
+    }
+
+  </script>
+  
+</body>
+</html>

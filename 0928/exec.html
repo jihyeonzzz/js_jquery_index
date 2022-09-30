@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제</title>
+  <!-- 아이콘 폰트 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+  <style>
+    ul, ol, li{list-style: none;}
+
+    #wrap{
+      width: 650px;
+      position: relative;
+    }
+    #photo{
+      padding: 18px 0px;
+      margin: 0 auto;
+      display: block;
+      width: 650px;
+    }
+    #wrap i.fas{
+      position: absolute;
+      top: 180px;
+      font-size: 50px;
+      text-align: center; line-height: 100px;
+      color: #ccc;
+      display: block;
+      width: 80px; height: 100px;
+      background-color: rgba(0, 0, 0, .2);
+    }
+    #wrap i.fas:hover{color: #ff0000;}
+    #wrap .fa-angle-left{left: 0px;}
+    #wrap .fa-angle-right{right: 0px;}
+    #page{
+      font-size: 14px;
+    }
+    .page{color: rgb(131, 131, 131);}
+    h3{
+      display: inline-block;
+      padding: 0px 10px;
+    }
+
+    #top{
+      width: 600px;
+      /* overflow: hidden; */
+      display: inline-block;
+      margin-left: 25px;
+    }
+    #top ul{
+      display: flex;
+      justify-content: center;
+      padding: 0px; margin: 0px;
+    }
+    #top ul li{
+      width: 75px; height: 70px;
+      overflow: hidden;
+    }
+    /* #top ul li:hover{border: 2px solid #f00;} */
+    #top ul li img{
+      width: 120px;
+    }
+
+    #top_wrap{
+      width: 650px; height: 70px;
+      border: 1px solid #ccc;
+      position: relative;
+      margin-bottom: 20px;
+    }
+    #top_wrap i.fas{
+      position: absolute;
+      top: 0px;
+      display: inline-block;
+      width: 25px; line-height: 70px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h3>포토</h3>
+  <span id="page"></span>
+  <article>
+    <div id="top_wrap">
+      <i class="fas fa-angle-left"></i>
+      <div id="top">
+        <ul>
+          <li><img src="./images/movie_image1.jpg" alt="" onclick="imgChange(1);"></li>
+          <li><img src="./images/movie_image2.jpg" alt="" onclick="imgChange(2);"></li>
+          <li><img src="./images/movie_image3.jpg" alt="" onclick="imgChange(3);"></li>
+          <li><img src="./images/movie_image4.jpg" alt="" onclick="imgChange(4);"></li>
+          <li><img src="./images/movie_image5.jpg" alt="" onclick="imgChange(5);"></li>
+          <li><img src="./images/movie_image6.jpg" alt="" onclick="imgChange(6);"></li>
+          <li><img src="./images/movie_image7.jpg" alt="" onclick="imgChange(7);"></li>
+          <li><img src="./images/movie_image8.jpg" alt="" onclick="imgChange(8);"></li>
+          <!-- <li><img src="./images/movie_image9.jpg" alt="" onclick="imgChange(9);"></li>
+          <li><img src="./images/movie_image10.jpg" alt="" onclick="imgChange(10);"></li> -->
+        </ul>
+      </div>
+      <i class="fas fa-angle-right"></i>
+    </div>
+    <div id="wrap">
+      <img src="./images/movie_image1.jpg" alt="" id="photo">
+      <i class="fas fa-angle-left"></i>
+      <i class="fas fa-angle-right"></i>
+    </div>
+  </article>
+
+  <script>
+    let n = 1;
+    document.getElementById('page').innerHTML=n+'<span class="page">/10건</span>';
+
+    
+
+    function imgChange(n){
+      let src='./images/movie_image1.jpg';
+      src = src.replace(1, n);
+      document.getElementById('photo').src=src;
+      document.getElementById('page').innerHTML=n+'<span class="page">/10건</span>';
+      
+      function nextImg(){
+      if(n==10){
+        n=1;
+      }else{
+        n++;
+      }
+      console.log(n);
+      document.getElementById('page').innerHTML=n+'<span class="page">/10건</span>';
+      document.getElementById('photo').src='./images/movie_image'+n+'.jpg';
+    }
+
+    function prevImg(){
+      if(n==1){
+        n=10;
+      }else{
+        n--;
+      }
+      console.log(n);
+      document.getElementById('page').innerHTML=n+'<span class="page">/10건</span>';
+      document.getElementById('photo').src='./images/movie_image'+n+'.jpg';
+    }
+
+    const l_btn = document.querySelector('#wrap .fa-angle-left');
+    const r_btn = document.querySelector('#wrap .fa-angle-right');
+
+    l_btn.addEventListener('click', function(e){
+      e.preventDefault();
+      prevImg();
+    });
+
+    r_btn.addEventListener('click', function(e){
+      e.preventDefault();
+      nextImg();
+    });
+    }
+
+  </script>
+  
+</body>
+</html>
