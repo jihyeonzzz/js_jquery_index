@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제</title>
+  <!-- 아이콘 폰트 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+  <style>
+    #wrap{
+      background: rgb(228, 228, 228);
+      width: 650px; height: 320px;
+      position: relative;
+    }
+    #photo{
+      padding: 18px 0px;
+      margin: 0 auto;
+      display: block;
+    }
+    i.fas{
+      position: absolute;
+      top: 110px;
+      font-size: 50px;
+      text-align: center; line-height: 100px;
+      color: #ccc;
+      display: block;
+      width: 80px; height: 100px;
+      background-color: rgba(0, 0, 0, .2);
+    }
+    i.fas:hover{color: #ff0000;}
+    .fa-angle-left{left: 0px;}
+    .fa-angle-right{right: 0px;}
+    #page{
+      font-size: 14px;
+    }
+    .page{color: rgb(131, 131, 131);}
+    h3{
+      display: inline-block;
+      padding: 0px 10px;
+    }
+  </style>
+</head>
+<body>
+  <h3>포토</h3>
+  <span id="page"></span>
+  <div id="wrap">
+    <img src="./images/movie_image1.jpg" alt="" id="photo">
+    <i class="fas fa-angle-left"></i>
+    <i class="fas fa-angle-right"></i>
+  </div>
+
+  <script>
+    let n = 1;
+    document.getElementById('page').innerHTML=n+'<span class="page">/10건</span>';
+
+    function nextImg(){
+      if(n==10){
+        n=1;
+      }else{
+        n++;
+      }
+      console.log(n);
+      document.getElementById('page').innerHTML=n+'<span class="page">/10건</span>';
+      document.getElementById('photo').src='./images/movie_image'+n+'.jpg';
+    }
+
+    function prevImg(){
+      if(n==1){
+        n=10;
+      }else{
+        n--;
+      }
+      console.log(n);
+      document.getElementById('page').innerHTML=n+'<span class="page">/10건</span>';
+      document.getElementById('photo').src='./images/movie_image'+n+'.jpg';
+    }
+
+    const l_btn = document.querySelector('.fa-angle-left');
+    const r_btn = document.querySelector('.fa-angle-right');
+
+    l_btn.addEventListener('click', function(e){
+      e.preventDefault();
+      prevImg();
+    });
+
+    r_btn.addEventListener('click', function(e){
+      e.preventDefault();
+      nextImg();
+    });
+
+  </script>
+  
+</body>
+</html>
